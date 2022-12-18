@@ -1,7 +1,7 @@
 //数组学习.c
 //定期更新
 
-#include <stdio.c>
+#include <stdio.h>
 
 //创建数组并添加元素
 

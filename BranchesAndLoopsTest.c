@@ -1,7 +1,8 @@
 //分支语句和循环语句测试.c
 
 /*编译日志
-2022.12.18
+2022.12.18 22：49 完成第一次编辑
+
 */
 
 
@@ -43,7 +44,7 @@
                     break;
             }
 
-        ps：只能出现一次，但是可以放在switch代码块中任何位置
+        ps：default只能出现一次，但是可以放在switch代码块中任何位置
 
 
 */
@@ -121,7 +122,35 @@
 // }
 
 //分支语句--switch
+// int main()
+// {
+//     int n = 0;
+//     scanf("%d\n",n);
+//     switch (n)
+//     {
+//     case 1:
+//         printf("星期一"); 	 //当n=1时若此处无break;语句，则会执行其以下的所有case中的语句，直到都执行完成或遇到break;语句后跳出，其他case同理
+// 		break;				//若此处有break;语句，则不会执行其以下的case中的语句并跳出，其他case同理
+//     case 2:
+//         printf("星期二");
+//     case 3:
+//         printf("星期三");
+//     case 4:
+//         printf("星期四");
+//     case 5:
+//         printf("星期五");
+//         break;
+//     case 6:
+//         printf("星期六");
+//     case 7:
+//         printf("星期日");
+//     default:    //处理非法语句，只能出现一次，但是能放在switch代码块里任何位置
+//         printf("输入错误！");
+//         break;
+//     }
 
+//     return 0;
+// }
 
 
 
@@ -163,37 +192,5 @@
 //         else 
 //             continue;
 //     }
-//     return 0;
-// }
-
-
-//switch练习代码
-// int main(){
-//     int n=1;
-//     int m=2;
-//     switch (n)
-//     {
-//     case 1: 
-//         m++;
-//     case 2: 
-//         n++;
-//     case 3:
-//         switch (n)
-//         {//switch 支持嵌套使用
-//         case 1:
-//             n++;
-//         case 2:
-//             m++;
-//             n++;
-//             break;
-//         }
-//     case 4:
-//         m++;
-//         break;
-//     default:
-//         break;
-//     }
-
-//     printf("m = %d\n n = %d", m,n);
 //     return 0;
 // }

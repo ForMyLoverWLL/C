@@ -92,7 +92,11 @@
 
 
 //代码区
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <windows.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 //分支语句--if
 // int main()
@@ -292,14 +296,19 @@
 // 	{
 // 		if( x==v[n] )
 // 		{
-// 			printf("匹配成功，已找到该数：%d", v[n]);
+// 			printf("匹配成功，已找到该数，下标为：%d" ,n);
+// 			break;
+// 		}
+// 		else if( n == 9)
+// 		{
+// 			printf("未找到该数！");
 // 			break;
 // 		}
 // 		else
 // 			printf("匹配失败，重新匹配中...\n");
 // 	}
 // }
-
+//
 // int main()
 // {
 // 	int arr[]={1,2,3,4,5,6,7,8,9,10};
@@ -328,7 +337,24 @@
 // 	}
 // 	return 0;
 // }
-
+//
+// int main()
+// {
+// 	int i,j=0;
+// 	int a=0;
+// 	char arr1[]="I love my girl wu ling ling!";
+// 	char arr2[]="............................";
+// 	a = sizeof(arr1);
+// 	for (i = 0,j = a-2;i<=a/2 && j>=a/2;i++,j--)
+// 	{
+// 		arr2[i]=arr1[i];
+// 		arr2[j]=arr1[j];
+// 		Sleep(1000);
+// 		system("cls");
+// 		printf("%s\n",arr2);
+// 	}
+// 	return 0;
+// }
 
 
 //7.编写代码实现，模拟用户登录情景，并且只能登陆3次（只允许输入三次密码，如果提示登陆成功，如果三次均输入错误，则退出程序）
@@ -339,14 +365,13 @@
 // 	printf("\t\t==================\n");
 // 	printf("\t\t==登录======退出==\n");
 // 	int i = 0;
-// 	int pwd= 123456;
+// 	char pwd[20] = "123456";
 // 	for ( i = 2; i >= 0; i--)
 // 	{
-// 		int upwd = 0;
-// 		; 
+// 		char upwd[20] = {0};
 // 		printf("\t\t请输入密码：");
-// 		scanf("%d",&upwd);
-// 		if( upwd != pwd)
+// 		scanf("%s",upwd);
+// 		if( strcmp(pwd,upwd) == 1) //== 不能直接比较两个字符串是否相等，应该调用strcmp函数来比较
 // 		{
 // 			if( i == 0)
 // 				{
@@ -362,5 +387,213 @@
 // 			break;
 // 		}
 // 	}
+// 	return 0;
+// }
+
+
+//8.打印100~200之间的素数
+// int main()
+// {
+//     1.试除法
+//
+//  
+// 	int i=0;
+// 	int count=0;
+// 	for ( i=100;i<=200;i++ )
+// 	{
+//         int j = 0;
+// 		for ( j=2;j<=i;j++ )
+// 		{
+// 			if( i%j == 0)
+// 			{
+// 				break;
+// 			}
+// 		}
+//         if( i == j)
+//         {
+//             printf("%d ", i);
+//             count++;
+//         }
+// 	}
+//     printf("\n总共有 %d 个素数", count);
+//     return 0;
+//  
+//
+//     2.优化试除法 --利用开平方i缩小j遍历的范围，降低时间复杂度
+//
+//
+//  int i=0;
+// 	int count=0;
+// 	for ( i=100;i<=200;i++ )
+// 	{
+//         int j = 0;
+// 		for ( j=2;j<=sqrt(i);j++ )
+// 		{
+// 			if( i%j == 0)
+// 			{
+// 				break;
+// 			}
+// 		}
+//         if( j > (sqrt(i)))
+//         {
+//             printf("%d ", i);
+//             count++;
+//         }
+// 	}
+//     printf("\n总共有 %d 个素数", count);
+//     return 0;
+//  
+//
+//     3.优化试除法 --利用偶数不可能是素数原理缩短i的遍历范围
+//  
+//  
+//  int i=0;
+// 	int count=0;
+// 	for ( i=101;i<=200;i+=2 )
+// 	{
+//         int j = 0;
+// 		for ( j=2;j<=sqrt(i);j++ )
+// 		{
+// 			if( i%j == 0)
+// 			{
+// 				break;
+// 			}
+// 		}
+//         if( j > (sqrt(i)))
+//         {
+//             printf("%d ", i);
+//             count++;
+//         }
+// 	}
+//     printf("\n总共有 %d 个素数", count);
+//     return 0;
+// }
+
+
+//9.计算1/1-1/2+1/3-1/4+1/5-...+1/99-1/100的和
+// int main()
+// {
+//     int i=0;
+//     double sum = 0.0;	//如果sum为整型，将无法输出小数
+//     int flag = 1;
+//     for( i=1;i<=100;i++)
+//     {
+//         sum += flag *1.0/i;
+//         flag = -flag;   //实现加减交替
+//     }
+//     printf("sum = %lf", sum);
+// }
+
+
+//10.求十个整数中最大值
+// int main()
+// {
+// 	int arr[10] = {};
+// 	int i,n= 0;
+// 	for (i=0;i<10;i++)
+// 	{
+// 		scanf("%d",&arr[i]);	//循环给数组赋值
+// 	}
+// 	int max = arr[0];	//max初始化不能为0，否则如果数组全是负数的话，只会输出0，应该给max赋值数组的首项
+// 	for (i=0;i<9;i++)
+// 	{
+// 		if(max < arr[i])	//循环判断如果max小于数组中的元素，则将该元素赋值给max，直到max是最大的那个
+// 		{
+// 			max=arr[i];
+// 		}
+// 	}
+// 	printf("max = %d",max);
+// 	return 0;
+// }
+
+
+//11.打印九九乘法表
+// int main()
+// {
+// 	int i,j=0;
+// 	for ( i=1;i<10;i++)
+// 	{
+// 		for( j=1;j<=i;j++)
+// 		{
+// 			printf("%d * %d = %-2d ",j,i,i*j);
+// 		}
+// 		printf("\n");
+// 	}
+// 	return 0;
+// }
+
+
+//12.猜数字游戏
+// //--菜单函数
+// int menu()
+// {
+// 	printf("======================\n");
+// 	printf("===== 猜数字游戏 =====\n");
+// 	printf("===== 1.开始游戏 =====\n");
+// 	printf("===== 2.退出游戏 =====\n");
+// 	printf("======================\n");
+// 	return 0;
+// }
+// //--游戏函数
+// int game()
+// {
+// 	int FLAG = 1;
+// 	int x = random() % 100;
+// 	int y = 0;
+// 	while(FLAG == 1)
+// 	{
+// 		printf("请输入一个数：");
+// 		scanf("%d",&y);
+// 		if(y>x)
+// 		{
+// 			printf("太大了！\n");
+// 			FLAG =1;
+// 		}
+// 		else if(y<x)
+// 		{
+// 			printf("太小了！\n");
+// 			FLAG =1;
+// 		}
+// 		else
+// 		{
+// 			printf("恭喜你，猜对了！\n");
+// 			FLAG = 0;
+// 		}
+// 	}
+// 	int fl = 0;
+// 	printf("是否再来一次？(1/2)：");
+// 	scanf("%d",&fl);
+// 	if( fl == 1)
+// 	{
+// 		FLAG = 1;
+// 		return 1;
+// 	}
+// 	else( fl == 2);
+// 		return 2;
+// }
+// //--主函数
+// int main()
+// {
+// 	system("cls");
+// 	int chs = 0;
+// 	do
+// 	{
+// 		menu();
+// 		printf("==============请选择：");
+// 		scanf("%d",&chs);
+// 		switch(chs)
+// 		{
+// 			case 1:
+// 				chs = game();
+// 				break;
+// 			case 2:
+// 				chs = 2;
+// 				break;
+// 			default:
+// 				printf("输入错误！请重新输入\n");
+// 				break;
+// 		}
+// 	}while (chs == 1);
+// 	printf("欢迎下次游玩！");
 // 	return 0;
 // }
